@@ -53,8 +53,8 @@ void sprite_move(Sprite* sp)
 	(*sp).speed.ry += (*sp).accel.ry - (*sp).speed.ry * COEFF_FROTTEMENT;
 	(*sp).accel.rx=0;
 	(*sp).accel.ry=0;
-	(*sp).pr.rx = (*sp).speed.rx;
-	(*sp).pr.ry = (*sp).speed.ry;
+	(*sp).pr.rx += (*sp).speed.rx;
+	(*sp).pr.ry += (*sp).speed.ry;
 	//	(*sp).pr.rx = ((*sp).pr.rx) + (*sp).speed * cos(temp) - (*sp).speed * COEFF_FROTTEMENT;
 	//	(*sp).pr.ry = ((*sp).pr.ry) + (*sp).speed * sin(temp) - (*sp).speed * COEFF_FROTTEMENT;
 	(*sp).pi.x += (int)(*sp).pr.rx;
