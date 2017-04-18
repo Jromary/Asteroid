@@ -18,7 +18,7 @@
 #define ship_angle 0
 
 #define bullet_size 8
-#define SHOOT_MAX 1000
+#define SHOOT_MAX 1
 
 
 #include <SDL.h>

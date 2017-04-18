@@ -26,12 +26,14 @@ extern void splitAsteroid(); // Créer les fragments et supprime l'asteroid cibl
 extern void sprite_shoot_init(Sprite *sp1, Sprite *sp2);
 extern void sprite_shoot(Sprite *sp);
 extern void exit_shoot();
+extern void moinsShoot(int id_cible);
+
 // Sons
 extern void playSound(Mix_Chunk *son);
 
 // Gestion d'evenements
 extern void eventact(SDL_Event event, int* exit, Sprite *sp,Mix_Chunk *son);
-extern long int distanceEntreSprites(Sprite objet1, Sprite objet2);
+extern long int distanceEntreSprites(Sprite objet1, Sprite objet2); // long int pour stocker les carrés
 
 
 #endif /* FUNCTIONS_H */

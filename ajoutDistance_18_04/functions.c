@@ -392,9 +392,8 @@ void sprite_shoot_init(Sprite *sp1, Sprite *sp2){
 	sprite_boost(sp1, 0.5);
 }
 
-void sprite_shoot(Sprite *sp){
-
-	
+void sprite_shoot(Sprite *sp)
+{	
 	if(nbShoot < SHOOT_MAX)
 	{
 		Sprite shoot;
@@ -408,7 +407,8 @@ void sprite_shoot(Sprite *sp){
 	}
 	return;
 }
-void exit_shoot(){
+void exit_shoot()
+{
 	int i,j;
 	for (i=0; i<nbShoot; i++){
 		if (fabs(shootTab[i].speed.rx)<0.1 && fabs(shootTab[i].speed.ry)<0.1){
@@ -419,7 +419,34 @@ void exit_shoot(){
 		}
 	}
 }
-
+void moinsShoot(int id_cible)
+{
+	if(nbShoot == 0)
+	{
+		printf("ERREUR : appel de moinsAsteroid alors que le tableau est vide\n");
+		printf("Aucun asteroide a supprimer.\n");
+	}
+	else
+	{
+		if(id_cible == nbShoot-1)
+		{
+			// libération de la mémoire du sprite
+			// SDL_FreeSurface(&shootTab[k].image);
+			nbShoot--;
+		}
+		else
+		{
+			// SDL_FreeSurface(&shootTab[k].image);
+			int i;
+			for(i = id_cible; i<= nbShoot; i++)
+			{
+				shootTab[i] = shootTab[i+1];
+			}
+			nbShoot--;
+		}
+	}
+	return;
+}
 
 /********* SONS *********/
 
@@ -488,8 +515,14 @@ long int distanceEntreSprites(Sprite objet1, Sprite objet2)
 {
 	int rayon1 = objet1.spritetaille/2;
 	int rayon2 = objet2.spritetaille/2;
+	int ax,ay;
+	ax = objet1.pi.x + rayon1;
+	ay = objet1.pi.y + rayon1;
+	int bx,by;
+	bx = objet2.pi.x + rayon2;
+	by = objet2.pi.y + rayon2;
 	// La distance totale entre les deux centres d'objets est
 	// Le rayon du premier objet plus une distance X plus le deuxième rayon
 	// donc ce qui nous interesse est la distance X.
-	return (sqrt( pow((objet2.pi.x-objet1.pi.x),2) + pow((objet2.pi.y-objet1.pi.y),2) ) - rayon1 - rayon2);
+	return (sqrt( pow((bx-ax),2) + pow((by-ay),2) ) - rayon1 - rayon2);
 }

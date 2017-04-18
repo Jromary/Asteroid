@@ -142,10 +142,17 @@ int main(int argc, char* argv[]){
 			shipImage.x = ship_size*vaisseau.angle;
 			SDL_BlitSurface(&(vaisseau.image), &shipImage, screen, &vaisseau.pi);
 		}
-
-		if(distanceEntreSprites(vaisseau,asteroidTab[0]) == 0)
+		if((nbAsteroid>0) && (nbShoot>0))
 		{
-			printf("TOUCHE GROS\n");
+			printf("dist : %ld\n", distanceEntreSprites(shootTab[0],asteroidTab[0]));
+		}
+		if((distanceEntreSprites(shootTab[0],asteroidTab[0]) == 0) && (nbAsteroid>0) && (nbShoot>0))
+		{
+			printf("TOUCHE\n");
+			// NOTE : detruire le tir avant sinon il risque de touche instantanement
+			// les fragments d'asteroid avec...
+			moinsShoot(0);
+			splitAsteroid();
 		}
 
 
