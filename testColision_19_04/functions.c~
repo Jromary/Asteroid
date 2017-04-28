@@ -463,7 +463,7 @@ void playSound(Mix_Chunk *son)
 void eventact(SDL_Event event, Sprite *sp/*,Mix_Chunk *son*/)
 {
 	int k = -1;
-	if (!(nbAsteroid==0)){
+	if !(nbAsteroid==0){
 		k = rand()%nbAsteroid;
 	}
 	switch (event.type)
@@ -484,7 +484,7 @@ void eventact(SDL_Event event, Sprite *sp/*,Mix_Chunk *son*/)
 					plusAsteroid();
 					break;
 				case SDLK_o:
-					if (!(k==-1)){
+					if !(k==-1){
 						splitAsteroid(k);
 					}
 					break;
