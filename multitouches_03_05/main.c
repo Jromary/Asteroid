@@ -1,11 +1,9 @@
 #include <SDL.h>
-#include <SDL/SDL_mixer.h>
+//#include <SDL/SDL_mixer.h>
 #include <time.h>
 
 #include "functions.h"
 #include "variables.h"
-
-
 
 /* comande de compilation:
 gcc -Wall -g -std=c99 Main.c `sdl-config --cflags --libs` -lm -o Main
@@ -26,13 +24,13 @@ int main(int argc, char* argv[]){
 	// Initialisation de SDL
 	SDL_Init(SDL_INIT_VIDEO);
 	SDL_WM_SetCaption("Space","Space");
-	SDL_EnableKeyRepeat(10, 100d);
+	SDL_EnableKeyRepeat(10, 100);
 	SDL_Surface* screen = SDL_SetVideoMode(screen_length, screen_height, 0, 0);
 	// Initialisation du module audio
-	if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024) == -1) //Initialisation de l'API Mixer
+	/*if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024) == -1) //Initialisation de l'API Mixer
 	{
 	   printf("%s", Mix_GetError());
-	}
+	}*/
 
 	// Declaration et chargement des images vaisseau, fond
 	SDL_Surface *ship, *temp, *background;
@@ -47,6 +45,7 @@ int main(int argc, char* argv[]){
 	SDL_FreeSurface(temp);
 
 	// Bruitages
+	/*
 	Mix_AllocateChannels(32); //Allouer 32 canaux
 	Mix_Chunk *bruitTir;//Créer un pointeur pour stocker un .WAV
 	bruitTir = Mix_LoadWAV("laser.wav"); //Charger un wav dans un pointeur
@@ -55,7 +54,7 @@ int main(int argc, char* argv[]){
 	Mix_Music *musique;
 	musique = Mix_LoadMUS("asteroid.mp3");
 	Mix_PlayMusic(musique, -1); //Jouer infiniment la musique
-
+	*/
 	// Déclaration et initialisation de la struct Sprite vaisseau
 
 	Sprite vaisseau;
@@ -89,7 +88,7 @@ int main(int argc, char* argv[]){
 	{
 		update_events(key);
 
-		eventact(key,&vaisseau,bruitTir);
+		eventact(key,&vaisseau);
 
 		/*** Déplacement, mise à jour et blit et différents objets ***/
 
@@ -169,9 +168,9 @@ int main(int argc, char* argv[]){
 	}
 
 	SDL_FreeSurface(background);
-	Mix_FreeChunk(bruitTir);//Libération du son 1
-	Mix_FreeMusic(musique);
-	Mix_CloseAudio(); //Fermeture de l'API
+	//Mix_FreeChunk(bruitTir);//Libération du son 1
+	//Mix_FreeMusic(musique);
+	// Mix_CloseAudio(); //Fermeture de l'API
 
 	
 //cleanup SDL

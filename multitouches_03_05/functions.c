@@ -457,12 +457,12 @@ void moinsShoot(int id_cible)
 }
 
 /********* SONS *********/
-
+/*
 void playSound(Mix_Chunk *son)
 {
 	Mix_PlayChannel(1, son, 0);
 }
-
+*/
 
 /********* ANIMATIONS **********/
 void plusAnim(Sprite cible)
@@ -514,11 +514,11 @@ void anim_cycle()
 
 
 /********* GESTION D'EVENEMENTS *********/
-void eventact(char *key, Sprite *sp, Mix_Chunk *son)
+void eventact(char *key, Sprite *sp)
 {
 	// prepare multiplayer game
   	SDLKey tabkey[NBPLAYERS][10] = {{SDLK_z,SDLK_q,SDLK_s,SDLK_d, SDLK_SPACE,
-  	SDLK_p, SDLK_o, SDLK_x, SDLK_m}}; 
+  	SDLK_p, SDLK_o, SDLK_m}}; 
 
   	int k = -1;
 	if(!(nbAsteroid == 0))
@@ -561,10 +561,7 @@ void eventact(char *key, Sprite *sp, Mix_Chunk *son)
 				splitAsteroid(k);	
 			}	
 		}
-	    if (key[tabkey[i][7]]) { // x
-			playSound(son);
-	    }
-	    if (key[tabkey[i][8]]) { // m
+	    if (key[tabkey[i][7]]) { // m
 			affichagePositionAsteroid();
 	    }
   	}

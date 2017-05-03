@@ -29,7 +29,7 @@ extern void exit_shoot();
 extern void moinsShoot(int id_cible);
 
 // Sons
-extern void playSound(Mix_Chunk *son);
+//extern void playSound(Mix_Chunk *son);
 
 //Animations
 extern void plusAnim(Sprite cible);
@@ -39,7 +39,7 @@ extern void anim_cycle();
 
 
 // Gestion d'evenements
-extern void eventact(char* key, Sprite *sp, Mix_Chunk *son);
+extern void eventact(char* key, Sprite *sp);
 extern void update_events(char* keys);
 extern long int distanceEntreSprites(Sprite objet1, Sprite objet2); // long int pour stocker les carrés
 extern void testColision();
