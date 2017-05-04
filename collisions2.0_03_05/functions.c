@@ -15,6 +15,7 @@ extern int gameover;
 extern int nbAnim;
 extern Sprite animTab[ANIM_MAX];
 extern int shoot_again;
+extern float ship_angle;
 
 
 extern SDL_Surface* screen;
@@ -38,21 +39,25 @@ void sprite_init(Sprite *sp, Pointreel npr, SDL_Rect npi, int ang, Pointreel spe
 
 void sprite_turn_right(Sprite* sp)
 {
-	if ((*sp).angle>0){
-		(*sp).angle = (*sp).angle - 1;
+	if (ship_angle > 0){
+		ship_angle -= ship_rotation;
+		(*sp).angle = (int)shpip_angle;
 	}
-	else {
+	else{
 		(*sp).angle = 35;
+		ship_angle = 35;
 	}
 }
 
 void sprite_turn_left(Sprite* sp)
 {
-	if ((*sp).angle<35){
-		(*sp).angle = (*sp).angle + 1;
+	if (ship_angle < 35){
+		ship_angle += ship_rotation;
+		(*sp).angle = (int)shpip_angle;
 	}
-	else {
+	else{
 		(*sp).angle = 0;
+		ship_angle = 0;
 	}
 }
 
