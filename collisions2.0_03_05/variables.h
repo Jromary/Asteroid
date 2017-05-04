@@ -18,6 +18,7 @@
 #define size_asteroid_med 32
 #define ship_size 32
 #define ship_angle 0
+#define ship_rotation 0.05
 
 #define bullet_size 8
 #define SHOOT_MAX 1000000
