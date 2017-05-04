@@ -9,4 +9,4 @@ Sprite animTab[ANIM_MAX];
 int nbAnim = 0;
 int shoot_again = 1;
 SDL_Surface* screen;
-float angle_ship = 0.0;
+float ship_angle = 0.0;
